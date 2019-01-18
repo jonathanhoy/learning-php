@@ -12,15 +12,20 @@
 
 
 <article class="main-content col-xs-8">
- 
 
-	<?php  
+ <form action="6.php" method="POST">
+ 	<input type="text" placeholder="name" name="name">
+ 	<input type="submit" name="submit">
+ </form> 
 
-/*  Step1: Make a form that submits one value to POST super global
+<?php  
 
-
- */
-
+  // Step 1: Make a form that submits one value to POST super global
+	
+	if (isset($_POST['submit'])) {
+		$name = $_POST['name'];
+		echo 'Hello ' . $name;
+	}
 	
 ?>
 
