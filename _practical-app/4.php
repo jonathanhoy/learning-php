@@ -20,17 +20,24 @@
 	// Step 2: Make a function that passes parameters and call it using parameter values
 	
 	function addNums() {
-		echo 1 + 2;
+		$num1 = 1;
+		$num2 = 2;
+		$sum = $num1 + $num2;
+		return $sum;
 	}
+	
+	$res1 = addNums();
 	
 	function calculator($num1, $num2) {
 		$sum = $num1 + $num2;
-		echo $sum;
+		return $sum;
 	}
 	
-	addNums();
+	$res2 = calculator(54315, 451);
+	
+	echo $res1;
 	echo '<br>';
-	calculator(54315, 451);
+	echo $res2;
 	
 	?>
 
