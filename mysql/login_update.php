@@ -1,5 +1,6 @@
 <?php include 'db.php'; ?>
 <?php include 'functions.php'; ?>
+<?php updateTable(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,8 @@
 <body>
 	<div class="container">
 		<div class="col-sm-6">
-			<form action="login_create.php" method="POST">
+			<h1 class="text-center">Update</h1>
+			<form action="login_update.php" method="POST">
 				<div class="form-group">
 					<label for="username">Username</label>
 					<input type="text" class="form-control" id="username" name="username" required>
@@ -31,4 +33,4 @@
 		</div>
 	</div>
 </body>
-</html>
+</html> 
