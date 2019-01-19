@@ -9,6 +9,15 @@ function createRows() {
 		global $connection;
 		$username = $_POST['username'];
 		$password = $_POST['password'];
+		
+		$username = mysqli_real_escape_string($connection, $username);
+		$password = mysqli_real_escape_string($connection, $password);
+		
+		$hashFormat = "$2y$10$";
+		$salt = "iusesomecrazystrings22";
+		$hashFormatAndSalt = $hashFormat . $salt;
+		
+		$password = crypt($password, $hashFormatAndSalt);
 
 		// the below code is for inserting the above data into the database
 
