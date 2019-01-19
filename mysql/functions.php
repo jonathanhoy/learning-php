@@ -26,6 +26,19 @@ function createRows() {
 }
 
 // Read
+function readRows() {
+	global $connection;
+	$query = 'SELECT * FROM users';
+	$result = mysqli_query($connection, $query);
+	if (!$result) {
+		die('Query failed' . mysqli_error());
+	}
+	while ($row = mysqli_fetch_assoc($result)) {
+		print_r($row);
+	}
+}
+
+// Dynamically display IDs
 function showAllData() {
 	global $connection; // need to make global because now $connection is locally scoped to the function, wasn't previously
 	$query = 'SELECT * FROM users'; // SQL command used in phpMyAdmin
@@ -36,7 +49,8 @@ function showAllData() {
 
 	while ($row = mysqli_fetch_assoc($result)) {
 		$id = $row['id'];
-		echo "<option value='$id'>$id</option>";
+		$username = $row['username'];
+		echo "<option value='$id'>$id, $username</option>";
 	}
 }
 
@@ -66,8 +80,6 @@ function updateTable() {
 function deleteRows() {
 	if (isset($_POST['submit'])) {
 		global $connection;
-		$username = $_POST['username'];
-		$password = $_POST['password'];
 		$id = $_POST['id'];
 
 		$query = 'DELETE FROM users ';
