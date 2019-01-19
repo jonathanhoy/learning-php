@@ -1,27 +1,5 @@
-<?php
-
-if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	
-//	if ($username && $password) {
-//		echo $username;
-//		echo $password;
-//	} else {
-//		echo 'missing field';
-//	}
-	
-	$connection = mysqli_connect('localhost', 'root', '', 'loginapp'); // server, default username, default password, database to connect to
-	
-	if ($connection) {
-		echo 'we are connected';
-	} else {
-		die('database connection failed');
-	}
-}
-
-?>
-
+<?php include 'db.php'; ?>
+<?php include 'functions.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +11,7 @@ if (isset($_POST['submit'])) {
 <body>
 	<div class="container">
 		<div class="col-sm-6">
-			<form action="login.php" method="POST">
+			<form action="login_create.php" method="POST">
 				<div class="form-group">
 					<label for="username">Username</label>
 					<input type="text" class="form-control" id="username" name="username" required>
@@ -42,8 +20,14 @@ if (isset($_POST['submit'])) {
 					<label for="password">Password</label>
 					<input type="password" class="form-control" id="password" name="password" required>
 				</div>
-				<input class="btn btn-primary" type="submit" name="submit" value="Submit">
+				<div class="form-group">
+					<select name="id" id="">
+						<?php	showAllData(); ?>
+					</select>
+				</div>
+				<input class="btn btn-primary" type="submit" name="submit" value="Update">
 			</form>
+			
 		</div>
 	</div>
 </body>
